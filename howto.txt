@@ -1,0 +1,2 @@
+> Markaby on shell
+  Markaby::Builder.new.capture { 'your_text' }

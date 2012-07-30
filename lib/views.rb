@@ -18,13 +18,21 @@ def show_index
   end
 end
 
-def show_new_expense(account)
+def show_new_expense
    markaby do
     html do
       head { title 'new expense' }
 
       body { h1 'new expense' 
-
+        form(:method => 'POST', :action=>'/expense/save') {
+          text 'Amount: '
+          input(:name => 'amount', :type => 'text') 
+          br
+          text 'Reason: '
+          input(:name => 'reason', :type => 'text')
+          br
+          input(:type => 'submit', :value => 'Submit')
+        }
       }
     end
   end
@@ -37,11 +45,9 @@ def show_expense_list(expenditures)
       head { title 'list expenses' }
 
       body { h1 'expense list' 
-        expenditures.each { |expense|
-            '-->'
-        }
-
+        expenditures
       }
     end
   end
 end
+
