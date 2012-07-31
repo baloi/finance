@@ -1,14 +1,13 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 require './lib/model'
-require './lib/views'
 require './lib/my_helpers'
 require 'pry'
 
 account = Account.new
 
 get '/' do
-  show_index
+  erb :index
 end
 
 get '/expense/list' do
