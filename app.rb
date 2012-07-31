@@ -3,7 +3,7 @@ require 'sinatra/activerecord'
 require './lib/model'
 require './lib/views'
 require './lib/my_helpers'
-#require 'pry'
+require 'pry'
 
 account = Account.new
 
