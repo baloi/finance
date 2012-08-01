@@ -1,8 +1,8 @@
+require 'pry'
 require 'sinatra'
 require 'sinatra/activerecord'
 require './lib/model'
 require './lib/my_helpers'
-require 'pry'
 
 account = Account.new
 
@@ -11,19 +11,21 @@ get '/' do
 end
 
 get '/expense/list' do
-  expenditures = expenditure_list( account.expenditures )
-  puts "---->>>#{expenditures}<<<<<----"
-  show_expense_list(expenditures)
+  @expenditures = account.expenditures
+  #binding.pry
+  erb :'expense/list'
 end
 
 get '/expense/new' do
-  show_new_expense
+  erb :'expense/new'
 end
 
 post '/expense/save' do
   amount = params[:amount].to_i
   reason = params[:reason]
-
+  
+  #puts ">>>>>Amount: #{amount}<<<<<<"
+  #puts ">>>>>Reason: #{reason}<<<<<<"
   account.spend(amount, reason: reason)
   redirect('/expense/list')
 end

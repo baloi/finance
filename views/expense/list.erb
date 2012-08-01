@@ -1,0 +1,9 @@
+<% if @expenditures.size > 0 %>
+  <% @expenditures.each_key {|reason| %>
+
+  <%= @expenditures[reason] %> for <%= reason %>
+  <br />
+  <% } %>
+<% else %>
+  no expenses
+<% end %>
